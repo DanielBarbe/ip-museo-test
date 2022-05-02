@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/textures/camera.png" type="Texture" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+
+[node name="Camera" type="Sprite"]
+position = Vector2( 278, 125.5 )
+scale = Vector2( 0.705882, 2.83333 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 1.98773, -3.41968 )
+scale = Vector2( 0.996066, 1.05042 )
+polygon = PoolVector2Array( -18.4167, 11.8235, -284.75, 95.8235, 310.902, 94.8155, 13.6493, 11.4875 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

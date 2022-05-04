@@ -7,6 +7,8 @@ export (float) var FRICTION_WEIGHT:float = 0.1
 export (float) var JUMP_SPEED:float = -500.0 
 export (float) var GRAVITY:float = 15
 
+onready var spawn_position = self.global_position
+
 var velocity:Vector2 = Vector2.ZERO
 
 func _get_input():
@@ -27,3 +29,6 @@ func _physics_process(delta):
 	
 	velocity.y += GRAVITY
 	move_and_slide(velocity, Vector2.UP)	
+
+func respawn_player():
+	self.position = spawn_position

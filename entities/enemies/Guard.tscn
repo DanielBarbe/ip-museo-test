@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/textures/shadow.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/shadow_triangle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/guard.png" type="Texture" id=2]
 [ext_resource path="res://Guard.gd" type="Script" id=3]
 

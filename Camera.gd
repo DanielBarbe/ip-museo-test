@@ -6,6 +6,7 @@ var direction = 1
 var movement_speed = 0.5
 var target = null
 var raycast
+var count = 0
 
 func _ready():
 	raycast = $RayCast2D
@@ -32,7 +33,8 @@ func _process(delta):
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
-			print(target)
+			count = (count + 1) % 60
+			print(str(count) + " " + str(target))
 
 func _on_Area2D_body_entered(body):
 	if target == null:

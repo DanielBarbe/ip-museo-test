@@ -4,9 +4,11 @@ var camera_rotation_degrees = 0
 var rotation_degrees_count = 0
 var direction = 1
 var movement_speed = 0.5
+var target = null
+var raycast
 
 func _ready():
-	pass # Replace with function body.
+	raycast = $RayCast2D
 
 func _process(delta):
 	
@@ -25,6 +27,19 @@ func _process(delta):
 		direction = 1
 	
 	self.rotation_degrees = camera_rotation_degrees
+	
+	if target != null:
+		raycast.set_cast_to(to_local(target.global_position))
+		raycast.enabled = true
+		if raycast.is_colliding() && raycast.get_collider() == target:
+			print(target)
 
 func _on_Area2D_body_entered(body):
-	print(body)
+	if target == null:
+		target = body
+		raycast.enabled = true
+		
+func _on_Area2D_body_exited(body):
+	if target == body:
+		target = null
+		raycast.enabled = false	
